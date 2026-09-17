@@ -5,56 +5,51 @@
 #include <pwd.h>      // getpwuid()
 #include <grp.h>      // getgrgid()
 #include <time.h>     // ctime()
+
 int main()
 {
-    // Variable to store file information
-    struct stat fileStat;
-    // Array to store the filename entered by the user
-    char filename[100];
-    // Read filename
+    struct stat fileStat;    // Holds file metadata
+    char filename[100];      // Stores user-entered filename
+
     printf("Enter filename: ");
     scanf("%s", filename);
-    // Get file information
+
+    // Fetch file stats; returns -1 if it fails
     if (stat(filename, &fileStat) == -1)
     {
-
         perror("Error");
         return 1;
     }
+
     printf("\n===== File Information =====\n");
-    // File size in bytes
-    printf("File Size : %ld bytes\n", fileStat.st_size);
-    // Inode number
-    printf("Inode Number : %ld\n", fileStat.st_ino);
-    // Number of hard links
-    printf("Hard Links : %ld\n", fileStat.st_nlink);
-    // User ID (Owner)
-    printf("Owner UID : %d\n", fileStat.st_uid);
-    // Group ID
-    printf("Group GID : %d\n", fileStat.st_gid);
-    // Owner name
+    printf("File Size : %ld bytes\n", fileStat.st_size);       // Size in bytes
+    printf("Inode Number : %ld\n", fileStat.st_ino);          // Inode number
+    printf("Hard Links : %ld\n", fileStat.st_nlink);        // Number of hard links
+    printf("Owner UID : %d\n", fileStat.st_uid);            // Owner user ID
+    printf("Group GID : %d\n", fileStat.st_gid);            // Group ID
+
+    // Convert UID/GID numbers to readable names
     printf("Owner Name : %s\n", getpwuid(fileStat.st_uid)->pw_name);
-    // Group name
     printf("Group Name : %s\n", getgrgid(fileStat.st_gid)->gr_name);
-    // File permissions
+
+    // Parse file permissions bit by bit
     printf("\nPermissions : ");
-    printf((S_ISDIR(fileStat.st_mode)) ? "d" : "-");
-    printf((fileStat.st_mode & S_IRUSR) ? "r" : "-");
-    printf((fileStat.st_mode & S_IWUSR) ? "w" : "-");
-    printf((fileStat.st_mode & S_IXUSR) ? "x" : "-");
-    printf((fileStat.st_mode & S_IRGRP) ? "r" : "-");
-    printf((fileStat.st_mode & S_IWGRP) ? "w" : "-");
-    printf((fileStat.st_mode & S_IXGRP) ? "x" : "-");
-    printf((fileStat.st_mode & S_IROTH) ? "r" : "-");
-    printf((fileStat.st_mode & S_IWOTH) ? "w" : "-");
-    printf((fileStat.st_mode & S_IXOTH) ? "x" : "-");
+    printf((S_ISDIR(fileStat.st_mode)) ? "d" : "-");        // Is directory?
+    printf((fileStat.st_mode & S_IRUSR) ? "r" : "-");       // Owner read
+    printf((fileStat.st_mode & S_IWUSR) ? "w" : "-");       // Owner write
+    printf((fileStat.st_mode & S_IXUSR) ? "x" : "-");       // Owner execute
+    printf((fileStat.st_mode & S_IRGRP) ? "r" : "-");       // Group read
+    printf((fileStat.st_mode & S_IWGRP) ? "w" : "-");       // Group write
+    printf((fileStat.st_mode & S_IXGRP) ? "x" : "-");       // Group execute
+    printf((fileStat.st_mode & S_IROTH) ? "r" : "-");       // Others read
+    printf((fileStat.st_mode & S_IWOTH) ? "w" : "-");       // Others write
+    printf((fileStat.st_mode & S_IXOTH) ? "x" : "-");       // Others execute
     printf("\n");
 
-    // Last access time
+    // Convert raw time to readable format
     printf("Last Access : %s", ctime(&fileStat.st_atime));
-    // Last modification time
     printf("Last Modification : %s", ctime(&fileStat.st_mtime));
-    // Last status change
     printf("Last Status Change : %s", ctime(&fileStat.st_ctime));
+
     return 0;
 }
