@@ -23,4 +23,4 @@ gcc exp9.c -o exp9
 ```
 
 ## OUTPUT :
-![Output for Experiment 9](https://github.com/Balakrishna0907/osLab/blob/1e04e24b469c368935d96f07eacdfa719337dfde/ex09/output.png)
+![Output for Experiment 9](https://github.com/VIGNESHWAR2058/osLab/blob/f58200a131ebe969ead31ac6f135ebf6471261df/osalab/ex09/image.png)
