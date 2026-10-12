@@ -20,7 +20,7 @@ Shell scripting in Linux is the practice of writing a sequence of commands into 
 | `if`, `elif`, `else` | Performs conditional execution. |
 
 ## SOURCE CODE :
-**File :** [checkfile.sh](https://github.com/Balakrishna0907/osLab/blob/098f2b3c2b0e7c40426cec1b75e144820905431f/ex02/checkfile.sh)
+**File :** [checkfile.sh](https://github.com/VIGNESHWAR2058/osLab/tree/5a657eb8fe8e7fd2a4e3033020eee95bb07055ad/osalab/ex02)
 
 ## HOW TO CREATE :
 
