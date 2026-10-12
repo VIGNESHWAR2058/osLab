@@ -8,7 +8,7 @@ FIFO (First-In, First-Out) Page Replacement Algorithm, which is one of the page 
 When the CPU requests a page that is not currently in the available memory frames, a page fault occurs. If all memory frames are occupied, the operating system must decide which page to remove to make room for the new page. The FIFO algorithm replaces the page that has been in memory the longest (the oldest page).
 
 ## SOURCE CODE :
-**File :** [exp9.c](https://github.com/Balakrishna0907/osLab/blob/d5c97986aaf7c8b5928263ac006405f8e4ec6d3c/ex09/exp9.c)
+**File :** [exp9.c](https://github.com/VIGNESHWAR2058/osLab/tree/d9e689a225fa706807662cf34d883b732d245be9/osalab/ex09)
 
 ## COMPILATION :
 
